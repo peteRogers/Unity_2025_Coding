@@ -4,7 +4,7 @@
 
 ## 1. Transform Manipulation
 
-### a) Directly Changing Position
+### a) Directly Changing `Position`
 You can move an object by directly setting its position:
 
 ```csharp
