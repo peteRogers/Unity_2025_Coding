@@ -8,7 +8,8 @@
     {
         StartCoroutine(PlayParticleSystemForDuration(0.5f));
     }
-    IEnumerator PlayParticleSystemForDuration(float duration)
+
+IEnumerator PlayParticleSystemForDuration(float duration)
     {
         // Play the ParticleSystem
         particleSystem.Play();
