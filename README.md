@@ -21,3 +21,19 @@ IEnumerator PlayParticleSystemForDuration(float duration)
         particleSystem.Stop();
     }
 ```
+### Read multiple data from arduino
+```csharp
+void Update(){
+    string data = arduinoCommunicator.ReceivedData;
+    Debug.Log("Data from Arduino: " + data);
+    if (!string.IsNullOrEmpty(data)){
+      // Debug.Log("Data from Arduino: " + data);
+      int[] numbers = System.Array.ConvertAll(data.Split('>'), int.Parse);
+      if (numbers[0] == 7 && numbers[1] == 1){
+        transform.Translate(0.01f, 0, 0);
+        //DO STUFF HERE
+      }
+      data = "";
+    }
+  }
+  ```
