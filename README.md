@@ -37,3 +37,36 @@ void Update(){
     }
   }
   ```
+
+  ### Full simpleReader code to read from arduino in a gameObject
+  ```csharp
+  using UnityEngine;
+
+public class SimpleDataReader : MonoBehaviour
+{
+  private ArduinoCommunicator arduinoCommunicator;
+  void Start()
+  {
+    arduinoCommunicator = GameObject.FindFirstObjectByType<ArduinoCommunicator>();
+  }
+
+  // Update is called once per frame
+  void Update(){
+    string data = arduinoCommunicator.ReceivedData;
+    Debug.Log("Data from Arduino: " + data);
+    if (!string.IsNullOrEmpty(data)){
+      // Debug.Log("Data from Arduino: " + data);
+      int[] numbers = System.Array.ConvertAll(data.Split('>'), int.Parse);
+      if (numbers[0] == 7 && numbers[1] == 1){
+        transform.Translate(0.01f, 0, 0);
+        //DO STUFF HERE
+      }
+      if (numbers[0] == 0 && numbers[1] == 1){
+        transform.Translate(-0.01f, 0, 0);
+        //DO STUFF HERE
+      }
+      data = "";
+    }
+  }
+}
+```
