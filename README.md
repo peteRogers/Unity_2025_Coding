@@ -70,3 +70,26 @@ public class SimpleDataReader : MonoBehaviour
   }
 }
 ```
+```csharp
+using UnityEngine;
+
+public class MoveAt45Degrees : MonoBehaviour
+{
+    // Set your desired speed in the Inspector.
+    public float speed = 5f;
+
+    void Update()
+    {
+        // Calculate the angle in radians (45° in radians)
+        float angleInRadians = 45f * Mathf.Deg2Rad;
+        
+        // Create the direction vector using cosine and sine.
+        // This results in a normalized vector pointing 45° upward from the horizontal.
+        Vector3 direction = new Vector3(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians), 0f);
+        
+        // Move the GameObject by adjusting its position.
+        // Multiplying by Time.deltaTime makes the movement frame rate independent.
+        transform.position += direction * speed * Time.deltaTime;
+    }
+}
+```
